@@ -8,7 +8,6 @@
 
 import UIKit
 import RealmSwift
-import SwiftUI
 
 class TasksViewController: UITableViewController {
     
@@ -80,7 +79,6 @@ class TasksViewController: UITableViewController {
         ) { [unowned self] _, _, isDone in
             StorageManager.shared.toggleCompleted(task)
             let nextIndexPath = getIndexPath(of: task)
-            
             tableView.moveRow(at: indexPath, to: nextIndexPath)
             isDone(true)
         }

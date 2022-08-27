@@ -6,7 +6,6 @@
 //  Copyright © 2021 Alexey Efimov. All rights reserved.
 //
 
-import Foundation
 import RealmSwift
 
 class StorageManager {

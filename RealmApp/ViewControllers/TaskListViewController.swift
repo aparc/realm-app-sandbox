@@ -8,7 +8,6 @@
 
 import UIKit
 import RealmSwift
-import SwiftUI
 
 class TaskListViewController: UITableViewController {
 
