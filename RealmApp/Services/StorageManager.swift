@@ -71,7 +71,7 @@ class StorageManager {
         }
     }
     
-    func done(_ task: Task) {
+    func toggleCompleted(_ task: Task) {
         write {
             task.isComplete = !task.isComplete
         }

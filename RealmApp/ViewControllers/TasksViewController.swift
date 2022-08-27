@@ -78,7 +78,7 @@ class TasksViewController: UITableViewController {
             style: .normal,
             title: task.isComplete ? "Undone" : "Done"
         ) { [unowned self] _, _, isDone in
-            StorageManager.shared.done(task)
+            StorageManager.shared.toggleCompleted(task)
             let nextIndexPath = getIndexPath(of: task)
             
             tableView.moveRow(at: indexPath, to: nextIndexPath)
