@@ -77,9 +77,10 @@ class TasksViewController: UITableViewController {
             style: .normal,
             title: task.isComplete ? "Undone" : "Done"
         ) { [unowned self] _, _, isDone in
-            StorageManager.shared.toggleCompleted(task)
-            let nextIndexPath = getIndexPath(of: task)
-            tableView.moveRow(at: indexPath, to: nextIndexPath)
+            StorageManager.shared.toggleCompleted(task) {
+                let nextIndexPath = getIndexPath(of: $0)
+                tableView.moveRow(at: indexPath, to: nextIndexPath)
+            }
             isDone(true)
         }
         
@@ -133,8 +134,8 @@ extension TasksViewController {
     
     private func getIndexPath(of task: Task) -> IndexPath {
         task.isComplete
-        ? IndexPath(row: completedTasks.count - 1, section: 1)
-        : IndexPath(row: currentTasks.count - 1, section: 0)
+        ? IndexPath(row: completedTasks.index(of: task) ?? 0, section: 1)
+        : IndexPath(row: currentTasks.index(of: task) ?? 0, section: 0)
     }
     
     private func findTask(by indexPath: IndexPath) -> Task {
